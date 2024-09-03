@@ -1,0 +1,41 @@
+extends layout.pug
+block content
+  .container
+    .row.justify-content-center
+      .col-md-8
+        if error
+          .alert.alert-warning= error
+        .card
+          .card-header Register
+          .card-body
+            form.form-horizontal(method='post' action='/register')
+              .mb-3
+                label.form-label.control-label(for='first_name') First Name
+                input#first_name.form-control(type='text' name='first_name' required)
+              .mb-3
+                label.form-label.control-label(for='last_name') Last Name
+                input#last_name.form-control(type='text' name='last_name' required)
+              .mb-3
+                label.form-label.control-label(for='email') E-mail
+                input#email.form-control(type='email' name='email' required)
+              .mb-3
+                label.form-label.control-label(for='password') Password
+                input#password.form-control(type='password' name='password' required
+                  oninput="validatePasswords()")
+                .password-feedback(id='password-feedback') 
+              .mb-3
+                label.form-label.control-label(for='verify_password') Verify Password
+                input#verify_password.form-control(type='password' name='verify_password' required
+                  oninput="validatePasswords()")
+                .password-feedback(id='verify-password-feedback') Passwords do not match.
+              .mb-3
+                label.form-label.control-label(for='role') Role
+                select#role.form-control(name='role')
+                  option(value='User', selected) User
+                  option(value='Admin') Admin
+              .mb-3.py-3
+                button.btn.btn-primary.login-button(type='submit') Register
+                a(href='/login').ps-2 Login
+
+block scripts
+  script(src='/validation.js')

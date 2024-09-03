@@ -1,0 +1,19 @@
+extends layout.pug
+block content
+  .container
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header Welcome
+          .card-body
+            p Welcome #{name} you are a #{role}
+            a.btn.btn-outline-light(href='/logout') Logout
+          if role === 'Admin'
+            .card
+              .card-body
+                img(src='https://imagecdn.app/v1/images/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1508921340878-ba53e1f016ec?width=300&height=300' alt='Admin')
+          if role === 'User'
+            .card
+              .card-body
+                img(src='https://imagecdn.app/v1/images/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1646617747609-45b466ace9a6?width=300&height=300' alt='User')
+
